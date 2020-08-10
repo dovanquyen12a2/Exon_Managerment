@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4D875A6-5C91-4F78-8148-0DC9B897A0F2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EXON.MONITOR</RootNamespace>
+    <AssemblyName>EXON.MONITOR</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Supervisor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevelopmentTool">
+      <HintPath>..\EXON.Common\Libs\DevelopmentTool.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework">
+      <HintPath>..\EXON.Common\Libs\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\EXON.Common\Libs\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>..\EXON.Common\Libs\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.Ribbon, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EXON.GradedEssay\Lib\System.Windows.Forms.Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AppConfig.cs" />
+    <Compile Include="Common\AppSession.cs" />
+    <Compile Include="Common\ConfigApplication.cs" />
+    <Compile Include="Common\Constant.cs" />
+    <Compile Include="Common\Controllers.cs" />
+    <Compile Include="Common\DatetimeConvert.cs" />
+    <Compile Include="Common\DivisionShift.cs" />
+    <Compile Include="Common\DTO.cs" />
+    <Compile Include="Common\Encryption.cs" />
+    <Compile Include="Common\En_Decrypt.cs" />
+    <Compile Include="Common\ErrorController.cs" />
+    <Compile Include="Common\INIHelper.cs" />
+    <Compile Include="Common\IPConfig.cs" />
+    <Compile Include="Common\SQLHelper.cs" />
+    <Compile Include="Control\Core\BufferPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Core\BufferPanel.designer.cs">
+      <DependentUpon>BufferPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucAddnewCom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucAddnewCom.Designer.cs">
+      <DependentUpon>ucAddnewCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucComputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucComputer.Designer.cs">
+      <DependentUpon>ucComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucComputerConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucComputerConfig.Designer.cs">
+      <DependentUpon>ucComputerConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucEditComputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucEditComputer.Designer.cs">
+      <DependentUpon>ucEditComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucQuanLyMayThi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucQuanLyMayThi.Designer.cs">
+      <DependentUpon>ucQuanLyMayThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmAddComputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmAddComputer.Designer.cs">
+      <DependentUpon>frmAddComputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmLoadingGIF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmLoadingGIF.Designer.cs">
+      <DependentUpon>frmLoadingGIF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmSuaThiSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmSuaThiSinh.Designer.cs">
+      <DependentUpon>frmSuaThiSinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmDangKyThiSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDangKyThiSinh.Designer.cs">
+      <DependentUpon>frmDangKyThiSinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmImportRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmImportRoom.Designer.cs">
+      <DependentUpon>frmImportRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmInfoRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmInfoRegister.Designer.cs">
+      <DependentUpon>frmInfoRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmInputDateTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmInputDateTime.Designer.cs">
+      <DependentUpon>frmInputDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmInputKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmInputKey.Designer.cs">
+      <DependentUpon>frmInputKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmQuanLyThiSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQuanLyThiSinh.Designer.cs">
+      <DependentUpon>frmQuanLyThiSinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmRegisterFinger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmRegisterFinger.Designer.cs">
+      <DependentUpon>frmRegisterFinger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmRoomConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmRoomConfig.Designer.cs">
+      <DependentUpon>frmRoomConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmServer.Designer.cs">
+      <DependentUpon>frmServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmSupervisorManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmSupervisorManage.Designer.cs">
+      <DependentUpon>frmSupervisorManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucServer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucServer.Designer.cs">
+      <DependentUpon>ucServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmThongBaoChuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmThongBaoChuyen.Designer.cs">
+      <DependentUpon>frmThongBaoChuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmTrungTam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmTrungTam.Designer.cs">
+      <DependentUpon>frmTrungTam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MTA_QUIZ_8DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MTA_QUIZ_8DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\frmBienBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmBienBan.Designer.cs">
+      <DependentUpon>frmBienBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmBienBanChuyenCaThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmBienBanChuyenCaThi.Designer.cs">
+      <DependentUpon>frmBienBanChuyenCaThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmBienBanContestantPause.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmBienBanContestantPause.Designer.cs">
+      <DependentUpon>frmBienBanContestantPause.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmBienBanTamDungPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmBienBanTamDungPhong.Designer.cs">
+      <DependentUpon>frmBienBanTamDungPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FrmRpKetQuaKipThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FrmRpKetQuaKipThi.Designer.cs">
+      <DependentUpon>FrmRpKetQuaKipThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FrmRpLichThiTheoCaThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FrmRpLichThiTheoCaThi.Designer.cs">
+      <DependentUpon>FrmRpLichThiTheoCaThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportDataset.cs">
+      <DependentUpon>ReportDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportDataset.Designer.cs">
+      <DependentUpon>ReportDataset.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Control\ucAddnewCom.resx">
+      <DependentUpon>ucAddnewCom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucComputer.resx">
+      <DependentUpon>ucComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucComputerConfig.resx">
+      <DependentUpon>ucComputerConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucEditComputer.resx">
+      <DependentUpon>ucEditComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucQuanLyMayThi.resx">
+      <DependentUpon>ucQuanLyMayThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmAddComputer.resx">
+      <DependentUpon>frmAddComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmImportRoom.resx">
+      <DependentUpon>frmImportRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmInputKey.resx">
+      <DependentUpon>frmInputKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmLoadingGIF.resx">
+      <DependentUpon>frmLoadingGIF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmSuaThiSinh.resx">
+      <DependentUpon>frmSuaThiSinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDangKyThiSinh.resx">
+      <DependentUpon>frmDangKyThiSinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmInfoRegister.resx">
+      <DependentUpon>frmInfoRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmInputDateTime.resx">
+      <DependentUpon>frmInputDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmQuanLyThiSinh.resx">
+      <DependentUpon>frmQuanLyThiSinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmRoomConfig.resx">
+      <DependentUpon>frmRoomConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmServer.resx">
+      <DependentUpon>frmServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmSupervisorManage.resx">
+      <DependentUpon>frmSupervisorManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucServer.resx">
+      <DependentUpon>ucServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmThongBaoChuyen.resx">
+      <DependentUpon>frmThongBaoChuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmTrungTam.resx">
+      <DependentUpon>frmTrungTam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report\frmBienBan.resx">
+      <DependentUpon>frmBienBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmBienBanChuyenCaThi.resx">
+      <DependentUpon>frmBienBanChuyenCaThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="MTA_QUIZ_8DataSet.xsc">
+      <DependentUpon>MTA_QUIZ_8DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MTA_QUIZ_8DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MTA_QUIZ_8DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MTA_QUIZ_8DataSet.xss">
+      <DependentUpon>MTA_QUIZ_8DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EXON.Common\EXON.Common.csproj">
+      <Project>{df92320d-cd11-499b-8002-ff00b40f101a}</Project>
+      <Name>EXON.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EXON.GradedEssay\EXON.GradedEssay.csproj">
+      <Project>{31e56cfc-b1e9-4dcf-85a0-e3f43b2146d4}</Project>
+      <Name>EXON.GradedEssay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EXON.SubData\EXON.SubData.csproj">
+      <Project>{21ad1a10-cbec-481c-9237-92febe540be8}</Project>
+      <Name>EXON.SubData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EXON.SubModel\EXON.SubModel.csproj">
+      <Project>{2bcdc94e-9ac7-41c5-9bc2-c04f5e7cfc0f}</Project>
+      <Name>EXON.SubModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuanLyHoiDongThiVer2\QuanLyHoiDongThiVer2.csproj">
+      <Project>{0b80e0f0-2a8c-4513-a473-78082db37436}</Project>
+      <Name>QuanLyHoiDongThiVer2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Report\frmBienBanContestantPause.resx">
+      <DependentUpon>frmBienBanContestantPause.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmBienBanTamDungPhong.resx">
+      <DependentUpon>frmBienBanTamDungPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FrmRpKetQuaKipThi.resx">
+      <DependentUpon>FrmRpKetQuaKipThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportChangeComputer.rdlc" />
+    <EmbeddedResource Include="Report\ReportChangeShift.rdlc" />
+    <None Include="Report\ReportDataset.xsc">
+      <DependentUpon>ReportDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Report\ReportDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportDataset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\ReportDataset.xss">
+      <DependentUpon>ReportDataset.xsd</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Report\rpBienBanTamDungPhongThi.rdlc" />
+    <EmbeddedResource Include="Report\rpBienBanTamDungThiSinh.rdlc" />
+    <EmbeddedResource Include="Report\rpKetQuaTheoCaThi.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpLichThiTheoCaThi.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Supervisor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\monitor-dubi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\monitor-hong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\monitor-khongcothisinh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keybooo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\television.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stick-man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer-service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stats.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\study.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\student.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoHVnew3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checklist.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ver\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

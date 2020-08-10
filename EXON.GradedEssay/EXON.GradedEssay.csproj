@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31E56CFC-B1E9-4DCF-85A0-E3F43B2146D4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EXON.GradedEssay</RootNamespace>
+    <AssemblyName>EXON.GradedEssay</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CircularProgressBar, Version=2.6.6823.24527, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.6.6823.24527\lib\net35-client\CircularProgressBar.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevelopmentTool">
+      <HintPath>..\EXON.Common\Libs\DevelopmentTool.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EXON.Common\Libs\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\EXON.Common\Libs\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>..\EXON.Common\Libs\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.Ribbon, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\System.Windows.Forms.Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WinFormAnimation, Version=1.5.6298.3372, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.5.6298.3372\lib\net35-client\WinFormAnimation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSession.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Control\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\frmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\frmProgress.Designer.cs">
+      <DependentUpon>frmProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\ucLoad.Designer.cs">
+      <DependentUpon>ucLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucPnlWelcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucPnlWelcome.Designer.cs">
+      <DependentUpon>ucPnlWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucReportKetQuaNN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucReportKetQuaNN.Designer.cs">
+      <DependentUpon>ucReportKetQuaNN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucReportContests.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucReportContests.Designer.cs">
+      <DependentUpon>ucReportContests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucReport.Designer.cs">
+      <DependentUpon>ucReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucSpeaking.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucSpeaking.Designer.cs">
+      <DependentUpon>ucSpeaking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucSpeakingContest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucSpeakingContest.Designer.cs">
+      <DependentUpon>ucSpeakingContest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucWrittingPhucTra.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucWrittingPhucTra.Designer.cs">
+      <DependentUpon>ucWrittingPhucTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucWritting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucWritting.Designer.cs">
+      <DependentUpon>ucWritting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucWrittingContest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\ucWrittingContest.Designer.cs">
+      <DependentUpon>ucWrittingContest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatetimeConvert.cs" />
+    <Compile Include="frmKetQuaDauRa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKetQuaDauRa.Designer.cs">
+      <DependentUpon>frmKetQuaDauRa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportEL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportEL.Designer.cs">
+      <DependentUpon>frmReportEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpeaking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpeaking.Designer.cs">
+      <DependentUpon>frmSpeaking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWritingPhucTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWritingPhucTra.Designer.cs">
+      <DependentUpon>frmWritingPhucTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWriting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWriting.Designer.cs">
+      <DependentUpon>frmWriting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmReportPhieuDiemThiNoiXacNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmReportPhieuDiemThiNoiXacNhan.Designer.cs">
+      <DependentUpon>frmReportPhieuDiemThiNoiXacNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmReportPhieuDiemThiNoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmReportPhieuDiemThiNoi.Designer.cs">
+      <DependentUpon>frmReportPhieuDiemThiNoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmReportPhieuDiemThiVietXacNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmReportPhieuDiemThiVietXacNhan.Designer.cs">
+      <DependentUpon>frmReportPhieuDiemThiVietXacNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmReportPhieuDiemThiViet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmReportPhieuDiemThiViet.Designer.cs">
+      <DependentUpon>frmReportPhieuDiemThiViet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmResultSpeaking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmResultSpeaking.Designer.cs">
+      <DependentUpon>frmResultSpeaking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmResultSumTNTL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmResultSumTNTL.Designer.cs">
+      <DependentUpon>frmResultSumTNTL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmResultSum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmResultSum.Designer.cs">
+      <DependentUpon>frmResultSum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmResultWritting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmResultWritting.Designer.cs">
+      <DependentUpon>frmResultWritting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmRpKetQuaTongNNDauRa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmRpKetQuaTongNNDauRa.Designer.cs">
+      <DependentUpon>frmRpKetQuaTongNNDauRa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FrmSpeakingScore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\FrmSpeakingScore.designer.cs">
+      <DependentUpon>FrmSpeakingScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportDataSet.cs">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportDataSet.Designer.cs">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Control\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\frmProgress.resx">
+      <DependentUpon>frmProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucLoad.resx">
+      <DependentUpon>ucLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucPnlWelcome.resx">
+      <DependentUpon>ucPnlWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucReportKetQuaNN.resx">
+      <DependentUpon>ucReportKetQuaNN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucReportContests.resx">
+      <DependentUpon>ucReportContests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucReport.resx">
+      <DependentUpon>ucReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucSpeaking.resx">
+      <DependentUpon>ucSpeaking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucSpeakingContest.resx">
+      <DependentUpon>ucSpeakingContest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucWrittingPhucTra.resx">
+      <DependentUpon>ucWrittingPhucTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucWritting.resx">
+      <DependentUpon>ucWritting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\ucWrittingContest.resx">
+      <DependentUpon>ucWrittingContest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKetQuaDauRa.resx">
+      <DependentUpon>frmKetQuaDauRa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportEL.resx">
+      <DependentUpon>frmReportEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpeaking.resx">
+      <DependentUpon>frmSpeaking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWritingPhucTra.resx">
+      <DependentUpon>frmWritingPhucTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWriting.resx">
+      <DependentUpon>frmWriting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\EXON.GradedEssay.frmSpeaking.resources" />
+    <EmbeddedResource Include="obj\Debug\EXON.GradedEssay.frmWriting.resources" />
+    <EmbeddedResource Include="obj\Debug\EXON.GradedEssay.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Debug\ReportRoomDiagrams.FrmSpeakingScore.resources" />
+    <EmbeddedResource Include="obj\Release\EXON.GradedEssay.frmSpeaking.resources" />
+    <EmbeddedResource Include="obj\Release\EXON.GradedEssay.frmWriting.resources" />
+    <EmbeddedResource Include="obj\Release\EXON.GradedEssay.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Release\ReportRoomDiagrams.FrmSpeakingScore.resources" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report\frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmReportPhieuDiemThiNoiXacNhan.resx">
+      <DependentUpon>frmReportPhieuDiemThiNoiXacNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmReportPhieuDiemThiNoi.resx">
+      <DependentUpon>frmReportPhieuDiemThiNoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmReportPhieuDiemThiVietXacNhan.resx">
+      <DependentUpon>frmReportPhieuDiemThiVietXacNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmReportPhieuDiemThiViet.resx">
+      <DependentUpon>frmReportPhieuDiemThiViet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmResultSpeaking.resx">
+      <DependentUpon>frmResultSpeaking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmResultSumTNTL.resx">
+      <DependentUpon>frmResultSumTNTL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmResultSum.resx">
+      <DependentUpon>frmResultSum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmResultWritting.resx">
+      <DependentUpon>frmResultWritting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmRpKetQuaTongNNDauRa.resx">
+      <DependentUpon>frmRpKetQuaTongNNDauRa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\FrmSpeakingScore.resx">
+      <DependentUpon>FrmSpeakingScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpKetQuaTongCuocthiTNTL.rdlc" />
+    <EmbeddedResource Include="Report\rpKetQuaTongTNTL.rdlc" />
+    <EmbeddedResource Include="Report\rpKetQuaTongCuocthi.rdlc" />
+    <EmbeddedResource Include="Report\rpPhieuDiemThiVietXacNhan.rdlc" />
+    <EmbeddedResource Include="Report\rpPhieuDiemThiViet.rdlc" />
+    <EmbeddedResource Include="Report\rpPhieuDiemThiNoi.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpKetQuaTheoCaThi.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpKetQuaTong.rdlc" />
+    <EmbeddedResource Include="Report\rpSpeakingAnswer.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\WritingAnswer.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="bin\Release\EXON.GradedEssay.exe.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\EXON.GradedEssay.csproj.EXON.GradedEssay.exe.config" />
+    <None Include="obj\Debug\EXON.GradedEssay.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\EXON.GradedEssay.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\RdlCompile.cache" />
+    <None Include="obj\Debug\RdlCompile.compiled" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\EXON.GradedEssay.csproj.GenerateResource.Cache" />
+    <None Include="obj\Release\EXON.GradedEssay.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Report\ReportDataSet.xsc">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Report\ReportDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\ReportDataSet.xss">
+      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Report\rpKetQuaTheoMonThi.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EXON.Common\EXON.Common.csproj">
+      <Project>{DF92320D-CD11-499B-8002-FF00B40F101A}</Project>
+      <Name>EXON.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EXON.SubData\EXON.SubData.csproj">
+      <Project>{21ad1a10-cbec-481c-9237-92febe540be8}</Project>
+      <Name>EXON.SubData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EXON.SubModel\EXON.SubModel.csproj">
+      <Project>{2bcdc94e-9ac7-41c5-9bc2-c04f5e7cfc0f}</Project>
+      <Name>EXON.SubModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\DevelopmentTool.dll" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\EXON.Common.dll" />
+    <Content Include="bin\Release\EXON.Common.pdb" />
+    <Content Include="bin\Release\EXON.GradedEssay.exe" />
+    <Content Include="bin\Release\EXON.GradedEssay.pdb" />
+    <Content Include="bin\Release\EXON.SubData.dll" />
+    <Content Include="bin\Release\EXON.SubData.pdb" />
+    <Content Include="bin\Release\EXON.SubModel.dll" />
+    <Content Include="bin\Release\EXON.SubModel.pdb" />
+    <Content Include="bin\Release\log4net.dll" />
+    <Content Include="bin\Release\log4net.xml" />
+    <Content Include="bin\Release\MetroFramework.dll" />
+    <Content Include="bin\Release\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="bin\Release\Microsoft.ReportViewer.WinForms.dll" />
+    <Content Include="bin\Release\Microsoft.ReportViewer.WinForms.xml" />
+    <Content Include="Lib\System.Windows.Forms.Ribbon.dll" />
+    <Content Include="obj\Debug\EXON.GradedEssay.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\EXON.GradedEssay.exe" />
+    <Content Include="obj\Debug\EXON.GradedEssay.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\Release\EXON.GradedEssay.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\EXON.GradedEssay.exe" />
+    <Content Include="obj\Release\EXON.GradedEssay.pdb" />
+    <Content Include="obj\Release\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Report\rpKetQuaTongDauRaNN.rdlc" />
+    <EmbeddedResource Include="Report\rpPhieuDiemThiNoiXacNhan.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Resources\print-22-157582.png" />
+    <None Include="Resources\create-document-2-563795.png" />
+    <None Include="Resources\save-309-1098126.png" />
+    <None Include="Resources\print-65-445177.png" />
+    <None Include="Resources\export-40-602457.png" />
+    <None Include="Resources\conversation-chat.png" />
+    <None Include="Resources\writing-15-156169.png" />
+    <None Include="Resources\writing.png" />
+    <None Include="Resources\images1.png" />
+    <None Include="Resources\images.png" />
+    <None Include="Resources\write-paper-ink-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

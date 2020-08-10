@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{21AD1A10-CBEC-481C-9237-92FEBE540BE8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EXON.SubData</RootNamespace>
+    <AssemblyName>EXON.SubData</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructures\DbFactory.cs" />
+    <Compile Include="Infrastructures\Disposable.cs" />
+    <Compile Include="Infrastructures\IDbFactory.cs" />
+    <Compile Include="Infrastructures\IRepository.cs" />
+    <Compile Include="Infrastructures\IUnitOfWork.cs" />
+    <Compile Include="Infrastructures\RepositoryBase.cs" />
+    <Compile Include="Infrastructures\UnitOfWork.cs" />
+    <Compile Include="MTAQuizDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AnswersheetDetailRepository.cs" />
+    <Compile Include="Repositories\AnswersheetRepository.cs" />
+    <Compile Include="Repositories\AnswersheetSpeakingRepository.cs" />
+    <Compile Include="Repositories\AnswersheetWritingRepository.cs" />
+    <Compile Include="Repositories\AnswerRepository.cs" />
+    <Compile Include="Repositories\BagOfTestRepository.cs" />
+    <Compile Include="Repositories\ContestanPauseRepository.cs" />
+    <Compile Include="Repositories\ContestantRepository.cs" />
+    <Compile Include="Repositories\ContestantShiftRepository.cs" />
+    <Compile Include="Repositories\ContestantTestRepository.cs" />
+    <Compile Include="Repositories\ContestRepository.cs" />
+    <Compile Include="Repositories\DivisionShiftRepository.cs" />
+    <Compile Include="Repositories\DivsionShiftPauseRepository.cs" />
+    <Compile Include="Repositories\ExaminationcouncilStaffRepository.cs" />
+    <Compile Include="Repositories\RoomDiagramRepository.cs" />
+    <Compile Include="Repositories\RoomTestRepository.cs" />
+    <Compile Include="Repositories\ScheduleRepository.cs" />
+    <Compile Include="Repositories\ShiftPauseRepository.cs" />
+    <Compile Include="Repositories\ShiftRepository.cs" />
+    <Compile Include="Repositories\StaffRepository.cs" />
+    <Compile Include="Repositories\SubjectRepository.cs" />
+    <Compile Include="Repositories\TestNumberRepository.cs" />
+    <Compile Include="Repositories\TestRepository.cs" />
+    <Compile Include="Repositories\ViolationContestantRepository.cs" />
+    <Compile Include="Repositories\ViolationRepository.cs" />
+    <Compile Include="Services\AnswerService.cs" />
+    <Compile Include="Services\AnswersheetDetailService.cs" />
+    <Compile Include="Services\AnswersheetService.cs" />
+    <Compile Include="Services\AnswersheetSpeakingService.cs" />
+    <Compile Include="Services\AnswersheetWritingService.cs" />
+    <Compile Include="Services\BagOfTestService.cs" />
+    <Compile Include="Services\ContestanPauseService.cs" />
+    <Compile Include="Services\ContestantPauseService.cs" />
+    <Compile Include="Services\ContestantService.cs" />
+    <Compile Include="Services\ContestantShiftService.cs" />
+    <Compile Include="Services\ContestantTestService.cs" />
+    <Compile Include="Services\ContestService.cs" />
+    <Compile Include="Services\DivisionShiftPauseService.cs" />
+    <Compile Include="Services\DivisionShiftService.cs" />
+    <Compile Include="Services\ExaminationcouncilStaffService.cs" />
+    <Compile Include="Services\RoomDiagramService.cs" />
+    <Compile Include="Services\RoomTestService.cs" />
+    <Compile Include="Services\ScheduleService.cs" />
+    <Compile Include="Services\ShiftPauseService.cs" />
+    <Compile Include="Services\ShiftService.cs" />
+    <Compile Include="Services\StaffService.cs" />
+    <Compile Include="Services\SubjectService.cs" />
+    <Compile Include="Services\SystemTimeService.cs" />
+    <Compile Include="Services\TestNumberService.cs" />
+    <Compile Include="Services\TestService.cs" />
+    <Compile Include="Services\ViolationContestantService.cs" />
+    <Compile Include="Services\ViolationService.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EXON.Common\EXON.Common.csproj">
+      <Project>{df92320d-cd11-499b-8002-ff00b40f101a}</Project>
+      <Name>EXON.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EXON.SubModel\EXON.SubModel.csproj">
+      <Project>{2bcdc94e-9ac7-41c5-9bc2-c04f5e7cfc0f}</Project>
+      <Name>EXON.SubModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
