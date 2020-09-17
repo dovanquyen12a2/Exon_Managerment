@@ -25,8 +25,10 @@ namespace EXON.MONITOR.Control
         public int contestanshifttid;
         private IContestantShiftService _ContestantShiftService;
         private IRoomDiagramService _RoomDiagramService;
+          private IContestantService _ContestantService;
         int _divisionshiftid;
         int _roomdiagramid;
+        int _contesttansid;
         public int status;
         public string ComputerName;
         private int _previousStatus=1;
@@ -36,7 +38,7 @@ namespace EXON.MONITOR.Control
         {
             InitializeComponent();
             _divisionshiftid = divisionShiftID;
-            _roomdiagramid = roomdia.RoomDiagramID;
+            _roomdiagramid = roomdia.RoomDiagramID;                 
             _ContestantShiftService = new ContestantShiftService();
             _RoomDiagramService = new RoomDiagramService();
             string fullnameCom = roomdia.ComputerName;
@@ -62,6 +64,38 @@ namespace EXON.MONITOR.Control
 
             // this.po.Y = _y;
         }
+          public ucComputer(CONTESTANTS_SHIFTS cONTESTANTS_SHIFTS , int divisionShiftID)
+          {
+               InitializeComponent();
+               _divisionshiftid = divisionShiftID;
+               _contesttansid = cONTESTANTS_SHIFTS.ContestantID;
+               _RoomDiagramService = new RoomDiagramService();
+               _ContestantShiftService = new ContestantShiftService();
+               _ContestantService = new ContestantService();
+               int fullnameCon = cONTESTANTS_SHIFTS.ContestantID;
+              
+               //if (cONTESTANTS_SHIFTS.Status == 4001)
+               //{
+               //     ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor_hong;
+               //     lbComputername.Text = fullnameCon.ToString();
+               //     lbComputername.ForeColor = Color.Red;
+
+               //}
+               //else 
+               if (cONTESTANTS_SHIFTS.Status == 4001)
+               {
+                    ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor_khongcothisinh;
+                    lbComputername.Text = fullnameCon.ToString();
+                    lbComputername.ForeColor = Color.Yellow;
+               }
+               else
+               {
+                    lbComputername.Text = fullnameCon.ToString();
+               }
+
+               // this.po.Y = _y;
+          }
+
         CONTESTANTS_SHIFTS GetContestantShiftByComName(int divisionshiftID, int comid)
         {
             CONTESTANTS_SHIFTS result = new CONTESTANTS_SHIFTS();
@@ -81,6 +115,7 @@ namespace EXON.MONITOR.Control
                 return new CONTESTANTS_SHIFTS();
             }
         }
+          
         CONTESTANT GetInfoContestant(int contestantID)
         {
             CONTESTANT result = new CONTESTANT();
@@ -115,8 +150,8 @@ namespace EXON.MONITOR.Control
         public void LoadInfoContestant()
         {
             _contestantshift = new CONTESTANTS_SHIFTS();
-            _contestantshift = GetContestantShiftByComName(_divisionshiftid, _roomdiagramid);
-
+               //_contestantshift = GetContestantShiftByComName(_divisionshiftid, _roomdiagramid);
+            _contestantshift = _ContestantShiftService.GetByContestantID(_divisionshiftid, _contesttansid);
             if (_contestantshift != null)
             {
                 status = _contestantshift.Status;
@@ -132,10 +167,11 @@ namespace EXON.MONITOR.Control
                 {
                     _previousStatus = _contestantshift.Status;
                    
-                }
+                }             
                 #region status
                 string statusStr = "";
-                if (_contestantshift.IsCheckFingerprint == 1 || _contestantshift.IsCheckFingerprint == 2)
+                //if (_contestantshift.IsCheckFingerprint == 1 || _contestantshift.IsCheckFingerprint == 2)
+                if(_contestantshift.ContestantShiftID ==  3000)
                 {
                     ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor;
                     //   cBCheckFP.Checked = true;
@@ -261,11 +297,9 @@ namespace EXON.MONITOR.Control
 
         private void ucComputer_Load(object sender, EventArgs e)
         {
-            LoadInfoContestant();
+               LoadInfoContestant();
 
         }
-
-
 
         public event EventHandler RightClick;
 
@@ -289,5 +323,7 @@ namespace EXON.MONITOR.Control
                     this.RightClick(this, e);
             }
         }
-    }
+
+         
+     }
 }

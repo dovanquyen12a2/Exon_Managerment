@@ -17,8 +17,8 @@ namespace EXON.MONITOR
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-               //Application.Run(new GUI.frmLogin());
-               Application.Run(new frmMain(20, 4, 1));
+               Application.Run(new GUI.frmLogin());
+               //Application.Run(new frmMain(20, 4, 1));
         } 
     }
 }

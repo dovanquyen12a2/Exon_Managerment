@@ -29,6 +29,7 @@ namespace EXON.SubData.Services
         void Save();
         List<int> ListContestantShiftID(int _divisionShiftID);
         CONTESTANTS_SHIFTS GetByContestantID(int _divisionShiftID, int userID);
+          
         void UpdateTimeStartForContestantShift(int _divisionShiftID, int timeNowStartTest);
         void UpdateStatusForContestantShift(int _divisionShiftID, int status);
        

@@ -48,6 +48,8 @@ namespace EXON.MONITOR.Control
         private int countContestant = 0;
         private int _divisionShiftID;
         private int _roomTestID;
+        private int _contestanShiftID;
+        private int _contestanID;
         private int _shiftID;
         private int _StatusDivisionShift; // trạng thái ca thi
         public delegate void WorkCompletedCallBack();
@@ -72,7 +74,7 @@ namespace EXON.MONITOR.Control
         {
             this.ds = _ds;
             this._divisionShiftID = ds.DivisionShiftID;
-            this._roomTestID = ds.RoomTestID;
+            this._roomTestID = ds.RoomTestID;           
             this._shiftID = ds.ShiftID;
             this._StatusDivisionShift = ds.Status;
             InitializeComponent();
@@ -526,15 +528,19 @@ namespace EXON.MONITOR.Control
             pnl.Controls.Clear();
             _DivisionShiftService = new DivisionShiftService();
             _RoomdiagramService = new RoomDiagramService();
-
+            _ContestantShiftService = new ContestantShiftService();
+            _ContestantService = new ContestantService();  
             Point newP = new Point(5, 20);
-            List<ROOMDIAGRAM> lstRoomdiagram = new List<ROOMDIAGRAM>();
-            lstRoomdiagram = _RoomdiagramService.GetAll().Where(x => x.RoomTestID == _roomTestID).ToList();
-            if (lstRoomdiagram.Count > 0)
+            //List<ROOMDIAGRAM> lstRoomdiagram = new List<ROOMDIAGRAM>();
+            //lstRoomdiagram = _RoomdiagramService.GetAll().Where(x => x.RoomTestID == _roomTestID).ToList();
+             
+            List<CONTESTANTS_SHIFTS> listContestant = new List<CONTESTANTS_SHIFTS>();
+            listContestant = _ContestantShiftService.GetAll().Where(x => x.DivisionShiftID== _divisionShiftID).ToList();
+            if (listContestant.Count > 0)
             {
-                for (int i = 0; i < lstRoomdiagram.Count; i++)
+                for (int i = 0; i < listContestant.Count; i++)
                 {
-                    ucComputer uccomputer = new ucComputer(lstRoomdiagram[i], _DivisionShiftService.GetByShiftAndRoomTest(_shiftID, _roomTestID).DivisionShiftID);
+                    ucComputer uccomputer = new ucComputer(listContestant[i], _DivisionShiftService.GetByShiftAndRoomTest(_shiftID, _roomTestID).DivisionShiftID);
                     if (i % 6 == 0 && i != 0)
                     {
                         //newP = uccomputer.Location;
@@ -546,7 +552,7 @@ namespace EXON.MONITOR.Control
                         newP.X += uccomputer.Width + 10;
                     }
                     uccomputer.Location = newP;
-                    uccomputer.Name = lstRoomdiagram[i].ComputerName;
+                    uccomputer.Name = listContestant[i].ContestantID.ToString();
                     uccomputer.ImageClick += new EventHandler(UserControl_ButtonClick);
                     uccomputer.RightClick += new EventHandler(Uccomputer_RightClick);
                     pnl.Controls.Add(uccomputer);

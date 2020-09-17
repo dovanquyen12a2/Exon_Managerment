@@ -92,21 +92,21 @@ namespace EXON.MONITOR.Control
             cbRoomTest.ValueMember = "RoomTestID";
             lstRoomdiagram = new List<ROOMDIAGRAM>();
             _RoomDiagramService = new RoomDiagramService();
-          lstComputer = new List<RoomDiagramFromRoomTest>();
+            lstComputer = new List<RoomDiagramFromRoomTest>();
             lstRoomdiagram = _RoomDiagramService.GetAllByRoomTest(CurrentRoomTestID).ToList();
             int count = 0;
             for (int i = 0; i < lstRoomdiagram.Count; i++)
             {
                
                         RoomDiagramFromRoomTest rd= new RoomDiagramFromRoomTest
-                                    {
-                                             RoomDiagramID = lstRoomdiagram[i].RoomDiagramID,
-                                              STT = ++count,
-                                            ComputerCode = lstRoomdiagram[i].ComputerCode,
-                                            ComputerName= lstRoomdiagram[i].ComputerName,                                       
-                                             Status = lstRoomdiagram[i].Status == 4001 ? "Tốt" : "Không phản hồi",
+                        {
+                         RoomDiagramID = lstRoomdiagram[i].RoomDiagramID,
+                         STT = ++count,
+                         ComputerCode = lstRoomdiagram[i].ComputerCode,
+                         ComputerName= lstRoomdiagram[i].ComputerName,                                       
+                         Status = lstRoomdiagram[i].Status == 4001 ? "Tốt" : "Không phản hồi",
                                           
-                                         };
+                        };
                 lstComputer.Add(rd);
             }
 

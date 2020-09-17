@@ -501,12 +501,12 @@ namespace EXON.GradedEssay.Control
                     if (lstSubSpeaking.Count > 0)
 
                     {
-                        Report.frmResultSum frm = new Report.frmResultSum(CurrentDs.DivisionShiftID,CurrentSubjectID);
+                        Report.frmResultSumTNTL frm = new Report.frmResultSumTNTL(CurrentDs.DivisionShiftID,CurrentSubjectID);
                         frm.ShowDialog();
                     }
                     else
                     {
-                        Report.frmResultSumTNTL frm = new Report.frmResultSumTNTL(CurrentDs.DivisionShiftID, CurrentSubjectID);
+                        Report.frmResultSum frm = new Report.frmResultSum(CurrentDs.DivisionShiftID, CurrentSubjectID);
                         frm.ShowDialog();
                     }
                 }
@@ -552,12 +552,12 @@ namespace EXON.GradedEssay.Control
                     if (lstSubSpeaking.Count > 0)
 
                     {
-                        Report.frmResultSum frm = new Report.frmResultSum(CurrentDs.DivisionShiftID,CurrentUnit);
+                        Report.frmResultSumTNTL frm = new Report.frmResultSumTNTL(CurrentDs.DivisionShiftID,CurrentUnit);
                         frm.ShowDialog();
                     }
                     else
                     {
-                        Report.frmResultSumTNTL frm = new Report.frmResultSumTNTL(CurrentDs.DivisionShiftID,CurrentUnit);
+                        Report.frmResultSum frm = new Report.frmResultSum(CurrentDs.DivisionShiftID,CurrentUnit);
                         frm.ShowDialog();
                     }
                 }
