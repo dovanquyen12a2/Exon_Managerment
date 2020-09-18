@@ -23,7 +23,7 @@ namespace EXON.SubData.Services
         void Save();
         List<int> ListRoomDiaID(int _roomTestID);
         ROOMDIAGRAM GetByComputername(string computerName);
-        IEnumerable<ROOMDIAGRAM> GetAllByRoomTest(int _roomTestID);
+        IEnumerable<ROOMDIAGRAM> GetAllByRoomTest(int _roomTestID); 
         List<ROOMDIAGRAM> GetListRoomByDs(int _divisionShiftID, int _roomTestID);
         void UpdateStatusbyAgent(int _roomTestID);
     }
@@ -85,6 +85,7 @@ namespace EXON.SubData.Services
             return _RoomDiagramRepository.GetSingleByCondition(x => x.ComputerName==computerName);
         }
 
+        
         IEnumerable<ROOMDIAGRAM> IRoomDiagramService.GetAllByRoomTest(int _roomTestID)
         {
             return _RoomDiagramRepository.GetMulti(x => x.RoomTestID == _roomTestID);

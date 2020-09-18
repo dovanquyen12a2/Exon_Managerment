@@ -552,7 +552,9 @@ namespace EXON.MONITOR.Control
                         newP.X += uccomputer.Width + 10;
                     }
                     uccomputer.Location = newP;
-                    uccomputer.Name = listContestant[i].ContestantID.ToString();
+                    CONTESTANT contestant = new CONTESTANT();
+                    contestant = GetInfoContestant(listContestant[i].ContestantID);
+                    uccomputer.Name = contestant.FullName;
                     uccomputer.ImageClick += new EventHandler(UserControl_ButtonClick);
                     uccomputer.RightClick += new EventHandler(Uccomputer_RightClick);
                     pnl.Controls.Add(uccomputer);
@@ -561,7 +563,23 @@ namespace EXON.MONITOR.Control
               
             }
         }
-        protected void UserControl_ButtonClick(object sender, EventArgs e)
+          CONTESTANT GetInfoContestant(int contestantID)
+          {
+               CONTESTANT result = new CONTESTANT();
+               MTAQuizDbContext Db = new MTAQuizDbContext();
+
+               try
+               {
+                    result = Db.CONTESTANTS.Where(x => x.ContestantID == contestantID).FirstOrDefault();
+                    return result;
+               }
+               catch
+               {
+                    return new CONTESTANT();
+               }
+
+          }
+          protected void UserControl_ButtonClick(object sender, EventArgs e)
         {
             //handle the event
             try

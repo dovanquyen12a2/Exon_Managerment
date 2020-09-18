@@ -21,11 +21,15 @@ namespace EXON.MONITOR.Control
         public bool ChangedStatus = false;
         CONTESTANT _contestant = new CONTESTANT();
         CONTESTANTS_SHIFTS _contestantshift = new CONTESTANTS_SHIFTS();
+        ROOMTEST _roomtest = new ROOMTEST();
+        ROOMDIAGRAM _roomdiagram = new ROOMDIAGRAM();
         public int contestantid;
         public int contestanshifttid;
+        private IDivisionShiftService _DivisionShiftService;
         private IContestantShiftService _ContestantShiftService;
         private IRoomDiagramService _RoomDiagramService;
-          private IContestantService _ContestantService;
+        private IContestantService _ContestantService;
+        private IRoomTestService _RoomTestService;
         int _divisionshiftid;
         int _roomdiagramid;
         int _contesttansid;
@@ -72,28 +76,112 @@ namespace EXON.MONITOR.Control
                _RoomDiagramService = new RoomDiagramService();
                _ContestantShiftService = new ContestantShiftService();
                _ContestantService = new ContestantService();
-               int fullnameCon = cONTESTANTS_SHIFTS.ContestantID;
-              
-               //if (cONTESTANTS_SHIFTS.Status == 4001)
-               //{
-               //     ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor_hong;
-               //     lbComputername.Text = fullnameCon.ToString();
-               //     lbComputername.ForeColor = Color.Red;
+               
 
-               //}
-               //else 
-               if (cONTESTANTS_SHIFTS.Status == 4001)
+               if (cONTESTANTS_SHIFTS != null)
                {
-                    ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor_khongcothisinh;
-                    lbComputername.Text = fullnameCon.ToString();
-                    lbComputername.ForeColor = Color.Yellow;
+                    status = cONTESTANTS_SHIFTS.Status;
+                    contestantid = cONTESTANTS_SHIFTS.ContestantID;
+                    contestanshifttid = cONTESTANTS_SHIFTS.ContestantShiftID;
+                    _contestant = new CONTESTANT();
+                    _contestant = GetInfoContestant(cONTESTANTS_SHIFTS.ContestantID);
+
+                    lbContestantCode.Text = _contestant.ContestantCode;
+                    lbContestantName.Text = _contestant.FullName;
+                    //cBCheckFP.Enabled = CheckedConfirmtoload;
+                    if (cONTESTANTS_SHIFTS.Status != (int)Constant.STATUS_DOING_BUT_INTERRUPT)
+                    {
+                         _previousStatus = cONTESTANTS_SHIFTS.Status;
+
+                    }
+                    #region status
+                    string statusStr = "";
+                    if (cONTESTANTS_SHIFTS.IsCheckFingerprint == 1 || cONTESTANTS_SHIFTS.IsCheckFingerprint == 2)
+                    //if (_contestantshift.ContestantShiftID == 3000)
+                    {
+                         ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor;
+                         //   cBCheckFP.Checked = true;
+                         this.BackColor = Color.White;
+                    }
+                    else
+                    {
+                         //  cBCheckFP.Checked = false;
+                         this.BackColor = Color.Gray;
+                         //ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor_khongcothisinh;
+                    }
+                    Color color = new Color();
+                    switch (cONTESTANTS_SHIFTS.Status)
+                    {
+                         case 3000:
+                              statusStr = "Đăng nhập";
+                              color = Color.SpringGreen;
+                              if (!ChangedStatus)
+                              {
+                                   ChangedStatus = true;
+                                   CheckedConfirmtoload = true;
+                              }
+
+                              break;
+                         case 3001:
+                              statusStr = "Đăng nhập lại ";
+                              color = Color.GreenYellow;
+                              break;
+                         case 3002:
+                              statusStr = "Sẵn sàng thi";
+                              color = Color.DeepSkyBlue;
+                              break;
+                         case 3003:
+                              statusStr = "Đang thi";
+                              color = Color.DodgerBlue;
+                              break;
+                         case 3004:
+
+                              statusStr = "Mất kết nối";
+                              color = Color.Fuchsia;
+                              if (_previousStatus != 3004 && _previousStatus > 1)
+                              {
+                                   EXON.Common.NotificationBox.Show(String.Format("Thí sinh tại máy {0} mất kết nối", ComputerName), EXON.Common.NotificationBox.AlertType.error);
+                                   _previousStatus = cONTESTANTS_SHIFTS.Status;
+                              }
+                              break;
+                         case 3005:
+                              statusStr = "Hoàn thành thi";
+                              color = Color.Turquoise;
+                              break;
+
+                         case 3009:
+                              statusStr = "Bắt đầu thi";
+                              break;
+                         case 3010:
+                              statusStr = "Sẵn sàng nhận đề";
+                              break;
+                         case 3011:
+                              statusStr = "Phát đề";
+                              break;
+                         case 4001:
+                              statusStr = "Chưa đăng nhập";
+                              color = Color.Yellow;
+                              break;
+                         case 5000:
+                              statusStr = "Tạm ngừng";
+                              color = Color.Yellow;
+                              break;
+                    }
+                    SetText(statusStr, color);
+
+                    //this.BackColor = color;
+                    #endregion
                }
                else
                {
-                    lbComputername.Text = fullnameCon.ToString();
+                    lbContestantName.Text = "Không có thí sinh";
+                    this.BackColor = Color.Gray;
+                    ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor_khongcothisinh;
+                    lbContestantCode.Text = "SBD";
+                    lbStatus.Text = "Trạng thái";
+                    lbStatus.BackColor = Color.Gray;
                }
 
-               // this.po.Y = _y;
           }
 
         CONTESTANTS_SHIFTS GetContestantShiftByComName(int divisionshiftID, int comid)
@@ -132,7 +220,23 @@ namespace EXON.MONITOR.Control
             }
 
         }
-        delegate void SetTextCallback(string text, Color color);
+          ROOMDIAGRAM GetInfoComputer(int roomtestID)
+          {
+               ROOMDIAGRAM result = new ROOMDIAGRAM();
+               MTAQuizDbContext Db = new MTAQuizDbContext();
+
+               try
+               {
+                    result = Db.ROOMDIAGRAMS.Where(x => x.RoomTestID == roomtestID).FirstOrDefault();
+                    return result;
+               }
+               catch
+               {
+                    return new ROOMDIAGRAM();
+               }
+
+          }
+          delegate void SetTextCallback(string text, Color color);
         private void SetText(string text, Color color)
         {
 
@@ -170,8 +274,8 @@ namespace EXON.MONITOR.Control
                 }             
                 #region status
                 string statusStr = "";
-                //if (_contestantshift.IsCheckFingerprint == 1 || _contestantshift.IsCheckFingerprint == 2)
-                if(_contestantshift.ContestantShiftID ==  3000)
+                if (_contestantshift.IsCheckFingerprint == 1 || _contestantshift.IsCheckFingerprint == 2)
+                //if(_contestantshift.ContestantShiftID ==  3000)
                 {
                     ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor;
                     //   cBCheckFP.Checked = true;
@@ -257,6 +361,45 @@ namespace EXON.MONITOR.Control
             }
 
         }
+        public void LoadInfoComputer()
+        {
+               
+               _ContestantShiftService = new ContestantShiftService();
+               _RoomDiagramService = new RoomDiagramService();
+               //List<ROOMDIAGRAM> lstRoomdiagram = new List<ROOMDIAGRAM>();
+               //lstRoomdiagram = _RoomdiagramService.GetAll().Where(x => x.RoomTestID == _roomTestID).ToList();
+               _roomtest = new ROOMTEST();
+               _roomtest = _RoomTestService.GetById(_divisionshiftid);
+               if (_roomtest != null)
+               {
+                    _roomdiagram = new ROOMDIAGRAM();
+                    _roomdiagram = GetInfoComputer(_roomtest.RoomTestID);
+                    string fullnameCom = _roomdiagram.ComputerName;
+                    //ComputerName = _roomdiagram.ComputerName;
+
+                    if (_roomdiagram.Status == 4002)
+                    {
+                         ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor_hong;
+                         lbComputername.Text = fullnameCom;
+                         lbComputername.ForeColor = Color.Red;
+
+                    }
+                    else if (_roomdiagram.Status == 4003)
+                    {
+                         ptbImage.Image = EXON.MONITOR.Properties.Resources.monitor_dubi;
+                         lbComputername.Text = fullnameCom;
+                         lbComputername.ForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                         lbComputername.Text = fullnameCom;
+                    }
+               }
+               else
+               {
+                    lbComputername.Text = "Chưa được phân máy";
+               }
+          }
         public void LoadInfoContestantByContestantID(int _divisionShiftId, int _ContestantId)
         {
             _contestantshift = new CONTESTANTS_SHIFTS();
@@ -294,10 +437,10 @@ namespace EXON.MONITOR.Control
             }
 
         }
-
+                    
         private void ucComputer_Load(object sender, EventArgs e)
         {
-               LoadInfoContestant();
+               //LoadInfoContestant();
 
         }
 
